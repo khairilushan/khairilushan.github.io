@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SnapReceipt - Your Smart Receipt Organizer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        header p {
+            font-size: 1.2em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature h3 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .cta {
+            margin-top: 30px;
+        }
+
+        .cta a {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta a:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer p {
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature {
+                width: 90%;
+                margin: 10px 0;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            .cta a {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>SnapReceipt</h1>
+        <p>Your Smart Way to Organize and Track Receipts</p>
+    </header>
+
+    <div class="container">
+        <h2>Why Choose SnapReceipt?</h2>
+
+        <div class="features">
+            <div class="feature">
+                <h3>Capture Receipts</h3>
+                <p>Snap a photo or upload your receipt images and let SnapReceipt handle the rest.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Automatic Itemization</h3>
+                <p>SnapReceipt reads your receipt, extracts all items, and calculates the total transaction for you.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Organize by Categories</h3>
+                <p>Items are automatically categorized, making it easy to track and organize your purchases.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Search & Filter</h3>
+                <p>Quickly search for receipts by item name or filter by categories to find exactly what you need.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Secure Data Storage</h3>
+                <p>All receipt data is stored locally on your device, ensuring privacy and control over your data.</p>
+            </div>
+
+            <div class="feature">
+                <h3>Manage Receipts</h3>
+                <p>Easily delete unwanted receipts or keep track of everything with simple management tools.</p>
+            </div>
+        </div>
+
+        <div class="cta">
+            <a href="#">Download SnapReceipt Now</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SnapReceipt. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
