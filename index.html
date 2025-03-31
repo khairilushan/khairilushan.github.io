@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khairil Ushan - Mobile App Developer Portfolio (visionOS Inspired)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      @font-face {
+        font-family: 'LucideIcons';
+        src: url(https://cdn.jsdelivr.net/npm/lucide-static@0.473.0/font/lucide.ttf) format('truetype');
+      }
+      .lucide {
+        font-family: 'LucideIcons';
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      /* Icon mapping */
+      .icon-mail:before { content: "\ef16"; }
+      .icon-linkedin:before { content: "\eb3f"; }
+      .icon-github:before { content: "\eb2d"; }
+      .icon-menu:before { content: "\ec0a"; }
+      .icon-x:before { content: "\ed6a"; }
+      .icon-briefcase:before { content: "\ebf8"; }
+      .icon-code:before { content: "\ea1e"; }
+      .icon-user:before { content: "\f05d"; }
+      .icon-smartphone:before { content: "\efd7"; }
+      .icon-arrow-right:before { content: "\e90e"; }
+      .icon-eye:before { content: "\eb0f"; }
+      .icon-calendar:before { content: "\e9a7"; }
+      .icon-building:before { content: "\e99b"; }
+      .icon-tag:before { content: "\f034"; }
+
+      /* visionOS Inspired Styles */
+      body {
+         background-color: #f3f4f6; /* Light gray background */
+      }
+
+      /* Glassmorphism Effect Base */
+      .glass-effect {
+        background-color: rgba(255, 255, 255, 0.65); /* Slightly less transparent */
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.25); /* Slightly more visible border */
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1); /* Soft shadow */
+      }
+
+       /* Darker Glass for contrast */
+      .glass-effect-dark {
+        background-color: rgba(0, 0, 0, 0.35); /* Slightly less transparent dark */
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      /* Subtle Glow on Hover */
+      .interactive-glow:hover {
+        box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+      }
+       .interactive-glow-dark:hover {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      }
+
+      /* Modal Styles */
+      .modal-overlay {
+        transition: opacity 0.3s ease-in-out;
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
+         -webkit-backdrop-filter: blur(8px);
+      }
+      .modal-container {
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        background-color: rgba(248, 250, 252, 0.9); /* More opaque modal background */
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      }
+      .modal-hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .modal-hidden .modal-container {
+         opacity: 0;
+         transform: scale(0.95) translateY(10px);
+      }
+      .modal-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+       .modal-visible .modal-container {
+         opacity: 1;
+         transform: scale(1) translateY(0);
+      }
+
+      /* Custom scrollbar for modal body */
+       .modal-body-scroll::-webkit-scrollbar {
+        width: 6px;
+      }
+      .modal-body-scroll::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+      }
+      .modal-body-scroll::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 3px;
+      }
+      .modal-body-scroll::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                     borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.25rem',
+                        '3xl': '1.75rem',
+                    },
+                    boxShadow: {
+                         'vision-soft': '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
+                         'vision-modal': '0 15px 40px rgba(0, 0, 0, 0.25)',
+                    },
+                    colors: {
+                        'vision-blue': '#0A84FF',
+                        'vision-indigo': '#5E5CE6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans antialiased">
+
+    <header class="glass-effect fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] max-w-6xl z-50 rounded-2xl">
+        <nav class="container mx-auto px-5 py-3 flex justify-between items-center">
+            <a href="#" class="text-lg font-semibold text-gray-800 flex items-center hover:text-vision-indigo transition-colors">
+                <span class="lucide icon-smartphone mr-2 text-xl text-vision-indigo"></span> Khairil Ushan
+            </a>
+            <div class="hidden md:flex items-center bg-gray-500/10 p-1 rounded-full space-x-1">
+                <a href="#about" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 hover:text-gray-900 transition-all duration-200">About</a>
+                <a href="#experience" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 hover:text-gray-900 transition-all duration-200">Experience</a>
+                <a href="#skills" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 hover:text-gray-900 transition-all duration-200">Skills</a>
+                <a href="#contact" class="px-4 py-1.5 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 hover:text-gray-900 transition-all duration-200">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-vision-indigo focus:outline-none p-1.5 bg-gray-500/10 rounded-full">
+                <span class="lucide icon-menu text-xl"></span>
+            </button>
+        </nav>
+         <div id="mobile-menu" class="hidden md:hidden bg-white/80 backdrop-blur-md border-t border-gray-200/50 rounded-b-2xl -mt-1 shadow-lg">
+            <a href="#about" class="block px-5 py-3 text-gray-700 hover:bg-indigo-50/50 hover:text-vision-indigo transition duration-200 font-medium">About</a>
+            <a href="#experience" class="block px-5 py-3 text-gray-700 hover:bg-indigo-50/50 hover:text-vision-indigo transition duration-200 font-medium">Experience</a>
+            <a href="#skills" class="block px-5 py-3 text-gray-700 hover:bg-indigo-50/50 hover:text-vision-indigo transition duration-200 font-medium">Skills</a>
+            <a href="#contact" class="block px-5 py-3 text-gray-700 hover:bg-indigo-50/50 hover:text-vision-indigo transition duration-200 font-medium">Contact</a>
+        </div>
+    </header>
+
+    <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-28 flex items-center justify-center text-center" style="background: radial-gradient(circle, rgba(230, 235, 255, 0.8) 0%, rgba(243, 244, 246, 0) 70%);">
+        <div class="container mx-auto px-6">
+            <img src="https://placehold.co/160x160/e0e7ff/4338ca?text=KU" alt="Khairil Ushan Profile Picture" class="w-36 h-36 md:w-44 md:h-44 rounded-full mx-auto mb-8 border-4 border-white/80 shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/160x160/e0e7ff/4338ca?text=Fallback';">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900">Khairil Ushan</h1>
+            <p class="text-xl md:text-2xl mb-10 text-gray-600 font-medium">Mobile Application Developer</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+                 <a href="#experience" class="glass-effect text-gray-800 font-semibold py-3 px-7 rounded-full interactive-glow transition-all duration-200 transform hover:scale-105">View Experience</a>
+                 <a href="#contact" class="bg-vision-indigo text-white font-semibold py-3 px-7 rounded-full shadow-lg shadow-indigo-500/30 interactive-glow transition-all duration-200 transform hover:scale-105 hover:shadow-indigo-500/50">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 md:py-32">
+        <div class="container mx-auto px-6 max-w-4xl">
+             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 flex items-center justify-center">
+                <span class="lucide icon-user mr-3 text-3xl text-vision-indigo"></span> About Me
+             </h2>
+             <div class="glass-effect p-8 md:p-12 rounded-3xl">
+                <p class="text-lg md:text-xl text-gray-700 leading-relaxed text-center">
+                    An experienced Mobile Application Developer since 2013, skilled in both Android and iOS development. Currently working as a Software Engineer at bol., focusing on building native UI with SwiftUI for CMS content and developing the Search Products flow. Passionate about staying current with the latest updates in the Android and iOS development worlds. Based in Utrecht, The Netherlands.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-24 md:py-32 bg-gray-100/50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 flex items-center justify-center">
+                 <span class="lucide icon-briefcase mr-3 text-3xl text-vision-indigo"></span> Professional Experience
+            </h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <div class="experience-card glass-effect rounded-3xl flex flex-col overflow-hidden transition-transform duration-300 hover:scale-[1.03]">
+                    <div class="p-7 flex flex-col flex-grow"
+                         data-title="Software Engineer"
+                         data-company="bol."
+                         data-dates="Nov 2022 - Present"
+                         data-details="bol is the largest eCommerce website for The Netherlands and Belgium. I have been part of the team that manage CMS content, so using SwiftUI to build native UI to visualize these CMS content. And then I moved to another team that responsible for building Search Products flow within the app. Working with basic MVVM setup and modular architecture by embracing Swift Packages."
+                         data-tech="SwiftUI, MVVM, Swift Packages, iOS">
+                        <div class="flex-grow">
+                            <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Software Engineer</h3>
+                            <p class="text-vision-indigo font-medium text-sm mb-2">bol.</p>
+                            <p class="text-xs text-gray-500 mb-4">Nov 2022 - Present</p>
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Developed native UI for CMS content visualization and built the Search Products flow within the app...</p>
+                            <div class="flex flex-wrap gap-2">
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">SwiftUI</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
+                               <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">iOS</span>
+                            </div>
+                        </div>
+                         <div class="mt-6">
+                             <button class="view-details-btn w-full text-center bg-gray-500/10 hover:bg-gray-500/20 text-vision-indigo font-medium text-sm py-2.5 px-4 rounded-full transition-colors duration-200 flex items-center justify-center">
+                                <span class="lucide icon-eye mr-2 text-base"></span> View Details
+                             </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-card glass-effect rounded-3xl flex flex-col overflow-hidden transition-transform duration-300 hover:scale-[1.03]">
+                    <div class="p-7 flex flex-col flex-grow"
+                         data-title="Principal Software Engineer"
+                         data-company="PT Ice House (MOST Project)"
+                         data-dates="Jul 2020 - Oct 2022"
+                         data-details="Implemented from scratch an Investment & Trading application for one of the biggest Bank in Indonesia. The application provides real time stock informations and allowing user to put create a buy/sell order. I implemented the iOS app with MVVM pattern for the presentation layer and adopting Clean Architecture on the data layer side. Each layer communicates with RxSwift APIs (Observable, Single, Completable, etc). I was using Moya library for the networking layer, where on the persistency layer I was using several things based on data sensitivity. So it was mix of Keychain, UserDefaults and Core Data. For handling real-time data communication with the WebSocket server, I used Starscream library. The whole codebase was written with Swift."
+                         data-tech="Swift, RxSwift, MVVM, Clean Architecture, Moya, Core Data, Keychain, UserDefaults, WebSocket, Starscream, iOS">
+                         <div class="flex-grow">
+                            <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Principal Software Engineer</h3>
+                            <p class="text-vision-indigo font-medium text-sm mb-2">PT Ice House (MOST Project)</p>
+                            <p class="text-xs text-gray-500 mb-4">Jul 2020 - Oct 2022</p>
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Implemented an Investment & Trading iOS app from scratch, providing real-time stock info and order functionality...</p>
+                             <div class="flex flex-wrap gap-2">
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">RxSwift</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Clean Arch.</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Swift</span>
+                               <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">iOS</span>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                             <button class="view-details-btn w-full text-center bg-gray-500/10 hover:bg-gray-500/20 text-vision-indigo font-medium text-sm py-2.5 px-4 rounded-full transition-colors duration-200 flex items-center justify-center">
+                                <span class="lucide icon-eye mr-2 text-base"></span> View Details
+                             </button>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="experience-card glass-effect rounded-3xl flex flex-col overflow-hidden transition-transform duration-300 hover:scale-[1.03]">
+                     <div class="p-7 flex flex-col flex-grow"
+                         data-title="Senior iOS Engineer"
+                         data-company="PT Ice House (Prodia Project)"
+                         data-dates="Aug 2019 - Jul 2020"
+                         data-details="Implemented from scratch an iOS application for a well-known health clinic company in Indonesia. The application allows user to browse any tests that can be conducted on the clinic. Users can also chat with doctor on to decide which tests that they should take based on their health conditions. Finally, user able to purchase and pay for the tests through this application. I implemented the iOS app with MVVM pattern on the presentation layer and adapting Clean Architecture on the data layer side where those layers are communicates with RxSwift APIs (Observable, Single, Completable, etc). I was using Moya library for the networking layer, where on the persistency layer I was using several things based on data sensitivity. So it was mix of Keychain, UserDefaults and Core Data. And for the chat platform I was using Socket.io library to connect to the Chat platform provider that was provided by the client (Prodia). The whole codebase was written with Swift."
+                         data-tech="Swift, RxSwift, MVVM, Clean Architecture, Moya, Core Data, Keychain, UserDefaults, Socket.io, iOS">
+                         <div class="flex-grow">
+                            <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Senior iOS Engineer</h3>
+                            <p class="text-vision-indigo font-medium text-sm mb-2">PT Ice House (Prodia Project)</p>
+                             <p class="text-xs text-gray-500 mb-4">Aug 2019 - Jul 2020</p>
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Built an iOS app from scratch for a health clinic, enabling test browsing, doctor chat, and test purchasing/payment...</p>
+                             <div class="flex flex-wrap gap-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">RxSwift</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Clean Arch.</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Swift</span>
+                               <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">iOS</span>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                             <button class="view-details-btn w-full text-center bg-gray-500/10 hover:bg-gray-500/20 text-vision-indigo font-medium text-sm py-2.5 px-4 rounded-full transition-colors duration-200 flex items-center justify-center">
+                                <span class="lucide icon-eye mr-2 text-base"></span> View Details
+                             </button>
+                        </div>
+                    </div>
+                </div>
+
+                 <div class="experience-card glass-effect rounded-3xl flex flex-col overflow-hidden transition-transform duration-300 hover:scale-[1.03]">
+                     <div class="p-7 flex flex-col flex-grow"
+                         data-title="Staff iOS Engineer"
+                         data-company="PT Ice House (MyBlueBird Project)"
+                         data-dates="Oct 2018 - Jul 2019"
+                         data-details="MyBlueBird is ride hailing application for the biggest taxi company in Indonesia, Blue Bird Group (IDX: BIRD). Initially I was just maintaining the feature development from existing app until the company decided to revamped the whole UI to make it looks more modern and fresh. So I implemented the revamped version of the MyBlueBird app. I implemented the iOS app using MVVM pattern with Coordinator pattern to handle the navigation logic. And on data layer side I used Repository pattern to accommodate multiple data sources. There was needs for real-time communication between client and server on this app which to provide real-time order status updates. So, I used SwiftGRPC and swift-protobuf library for that case. I also implemented this application in the modularized way, so each feature is developed inside a specific Cocoa Touch Framework and the main app target that compose all those feature frameworks. The whole codebase was written with Swift."
+                         data-tech="Swift, MVVM, Coordinator Pattern, Repository Pattern, SwiftGRPC, Protobuf, Cocoa Touch Framework, iOS">
+                         <div class="flex-grow">
+                            <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Staff iOS Engineer</h3>
+                            <p class="text-vision-indigo font-medium text-sm mb-2">PT Ice House (MyBlueBird Project)</p>
+                             <p class="text-xs text-gray-500 mb-4">Oct 2018 - Jul 2019</p>
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Revamped the UI and implemented the MyBlueBird ride-hailing app using MVVM, Coordinator, and modular architecture...</p>
+                             <div class="flex flex-wrap gap-2">
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Coordinator</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">gRPC</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Swift</span>
+                               <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">iOS</span>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                             <button class="view-details-btn w-full text-center bg-gray-500/10 hover:bg-gray-500/20 text-vision-indigo font-medium text-sm py-2.5 px-4 rounded-full transition-colors duration-200 flex items-center justify-center">
+                                <span class="lucide icon-eye mr-2 text-base"></span> View Details
+                             </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card glass-effect rounded-3xl flex flex-col overflow-hidden transition-transform duration-300 hover:scale-[1.03]">
+                     <div class="p-7 flex flex-col flex-grow"
+                         data-title="Senior iOS Engineer"
+                         data-company="MatahariMall.com"
+                         data-dates="Mar 2016 - Sept 2018"
+                         data-details="MatahariMall.com is an eCommerce company. The application allows user to browse all products from all sellers that is available until they decide to purchase and pay for the product. When I joined the team, I helped maintain the new and existing feature which still using Objective-C until we decided to rewrite the whole code to Swift. I implemented MVVM with Clean Architecture approach where each feature is modularized to specific development Pods (Cocoapods). I used Moya for networking layer and mix of Realm, KeyChain and UserDefaults for the persistency layer."
+                         data-tech="Swift, Objective-C, MVVM, Clean Architecture, Cocoapods, Moya, Realm, Keychain, UserDefaults, iOS">
+                         <div class="flex-grow">
+                            <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Senior iOS Engineer</h3>
+                            <p class="text-vision-indigo font-medium text-sm mb-2">MatahariMall.com</p>
+                             <p class="text-xs text-gray-500 mb-4">Mar 2016 - Sept 2018</p>
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Maintained Objective-C features and led the rewrite to Swift for the eCommerce app using MVVM, Clean Architecture...</p>
+                             <div class="flex flex-wrap gap-2">
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Swift</span>
+                               <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">Objective-C</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Clean Arch.</span>
+                               <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">iOS</span>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                             <button class="view-details-btn w-full text-center bg-gray-500/10 hover:bg-gray-500/20 text-vision-indigo font-medium text-sm py-2.5 px-4 rounded-full transition-colors duration-200 flex items-center justify-center">
+                                <span class="lucide icon-eye mr-2 text-base"></span> View Details
+                             </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card glass-effect rounded-3xl flex flex-col overflow-hidden transition-transform duration-300 hover:scale-[1.03]">
+                     <div class="p-7 flex flex-col flex-grow"
+                         data-title="Mobile Application Developer"
+                         data-company="Street Directory Pte Ltd"
+                         data-dates="Apr 2013 - Feb 2016"
+                         data-details="Singapore Map (iOS & Android): When I joined the company, I was an Android Developer. After few months due to lack of resource I also helped to develop the iOS application. SingaporeMap is map based application that provides information about business directory, bus stop informations and point-to-point direction. I maintained the existing codebase to add features or fixing some bugs. Very basic architecture where the Activity or UIViewController layer directly depends on the data layer. For the map, we had our own map engine since we had our own cartographer that draw the actual map, so were not using any map provider.\n\nOpenSnap by OpenRice (Android): OpenSnap is an application that allows users to share photos of food that they eat and where they eat it. It also provides detail information about restaurant and restaurant's reviews."
+                         data-tech="Android, Java, iOS, Objective-C, Custom Map Engine">
+                         <div class="flex-grow">
+                            <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Mobile Application Developer</h3>
+                            <p class="text-vision-indigo font-medium text-sm mb-2">Street Directory Pte Ltd</p>
+                             <p class="text-xs text-gray-500 mb-4">Apr 2013 - Feb 2016</p>
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Developed and maintained Android & iOS apps (Singapore Map, OpenSnap) including features, bug fixes, and custom map integration...</p>
+                             <div class="flex flex-wrap gap-2">
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Android</span>
+                                <span class="bg-orange-100 text-orange-800 text-xs font-medium px-3 py-1 rounded-full">Java</span>
+                               <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">iOS</span>
+                               <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">Objective-C</span>
+                            </div>
+                        </div>
+                        <div class="mt-6">
+                             <button class="view-details-btn w-full text-center bg-gray-500/10 hover:bg-gray-500/20 text-vision-indigo font-medium text-sm py-2.5 px-4 rounded-full transition-colors duration-200 flex items-center justify-center">
+                                <span class="lucide icon-eye mr-2 text-base"></span> View Details
+                             </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card glass-effect rounded-3xl flex flex-col overflow-hidden transition-transform duration-300 hover:scale-[1.03]">
+                     <div class="p-7 flex flex-col flex-grow"
+                         data-title="Android Engineer (Part-time)"
+                         data-company="KitaBisa"
+                         data-dates="2013 (3 Months)"
+                         data-details="I rewrite the whole codebase to Kotlin, which previously built with React Native. KitaBisa is the biggest crowdsourcing company in Indonesia that allow their users to donate money to other people in needs. I implemented the application using MVVM with Clean Architecture approach, where I used Retrofit for the networking layer, mix of Room and Shared Preferences for the persistency layer. The the ViewModel was inherited from Android Architecture Component's ViewModel."
+                         data-tech="Kotlin, Android, MVVM, Clean Architecture, Retrofit, Room, Shared Preferences, Android Architecture Components">
+                         <div class="flex-grow">
+                            <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Android Engineer (Part-time)</h3>
+                            <p class="text-vision-indigo font-medium text-sm mb-2">KitaBisa</p>
+                             <p class="text-xs text-gray-500 mb-4">2013 (3 Months)</p>
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Rewrote the Android application from React Native to native Kotlin using MVVM and Clean Architecture for Indonesia's largest crowdsourcing platform...</p>
+                             <div class="flex flex-wrap gap-2">
+                               <span class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Kotlin</span>
+                               <span class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Android</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Clean Arch.</span>
+                            </div>
+                        </div>
+                         <div class="mt-6">
+                             <button class="view-details-btn w-full text-center bg-gray-500/10 hover:bg-gray-500/20 text-vision-indigo font-medium text-sm py-2.5 px-4 rounded-full transition-colors duration-200 flex items-center justify-center">
+                                <span class="lucide icon-eye mr-2 text-base"></span> View Details
+                             </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div> </div>
+    </section>
+
+    <section id="skills" class="py-24 md:py-32">
+         <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800 flex items-center justify-center">
+                <span class="lucide icon-code mr-3 text-3xl text-vision-indigo"></span> Technical Skills
+            </h2>
+            <div class="glass-effect p-8 md:p-12 rounded-3xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-6 text-gray-800 text-center md:text-left">Programming Languages</h3>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">Swift</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">Kotlin</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">Java</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">Objective-C</span>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-semibold mb-6 text-gray-800 text-center md:text-left">Frameworks, Libraries & Concepts</h3>
+                        <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">UIKit</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">SwiftUI</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">Core Data</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">Combine</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">async/await</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">RxSwift</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">TCA</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">KMM</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">MVVM</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">Clean Arch.</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">Git</span>
+                            <span class="glass-effect px-4 py-2 rounded-full font-medium text-sm text-gray-800 shadow-sm border-none">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 md:py-32">
+         <div class="container mx-auto px-6 max-w-3xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Let's Connect</h2>
+            <p class="text-lg text-gray-600 mb-12">
+                Interested in working together or have a question? Feel free to reach out.
+            </p>
+             <div class="glass-effect-dark p-8 md:p-10 rounded-3xl inline-block">
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-5">
+                     <a href="mailto:khairil.ushan@gmail.com" class="flex items-center justify-center w-full sm:w-auto bg-vision-indigo text-white font-semibold py-3 px-6 rounded-full shadow-lg shadow-indigo-500/30 interactive-glow transition-all duration-200 transform hover:scale-105 hover:shadow-indigo-500/50">
+                        <span class="lucide icon-mail mr-2 text-lg"></span> Email Me
+                    </a>
+                     <a href="https://www.linkedin.com/in/khairilushan/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full sm:w-auto glass-effect text-gray-800 font-medium py-3 px-6 rounded-full interactive-glow-dark transition-all duration-200 transform hover:scale-105">
+                        <span class="lucide icon-linkedin mr-2 text-lg"></span> LinkedIn
+                    </a>
+                     <a href="https://github.com/khairilushan" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center w-full sm:w-auto glass-effect text-gray-800 font-medium py-3 px-6 rounded-full interactive-glow-dark transition-all duration-200 transform hover:scale-105">
+                        <span class="lucide icon-github mr-2 text-lg"></span> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-gray-500 py-8 mt-16">
+        <div class="container mx-auto px-6 text-center text-xs">
+            <p>&copy; 2025 Khairil Ushan. Based in Utrecht, The Netherlands.</p>
+             <p class="mt-1 opacity-75">UI Inspired by visionOS</p>
+        </div>
+    </footer>
+
+    <div id="project-modal" class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4 modal-hidden">
+        <div class="modal-container w-full max-w-3xl max-h-[90vh] rounded-3xl overflow-hidden flex flex-col">
+            <div class="flex justify-between items-center p-5 border-b border-black/10 flex-shrink-0"> <h3 id="modal-title" class="text-xl md:text-2xl font-semibold text-gray-900">Project Details</h3>
+                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-800 transition-colors p-1 rounded-full hover:bg-black/10">
+                    <span class="lucide icon-x text-2xl"></span>
+                </button>
+            </div>
+            <div class="p-6 md:p-8 overflow-y-auto flex-grow modal-body-scroll">
+                <div class="mb-5">
+                    <p class="text-vision-indigo font-semibold text-lg" id="modal-company">Company Name</p>
+                    <p class="text-sm text-gray-600 flex items-center mt-1">
+                        <span class="lucide icon-calendar mr-1.5 text-base opacity-70"></span>
+                        <span id="modal-dates">Dates</span>
+                    </p>
+                </div>
+                <div class="prose prose-sm sm:prose-base max-w-none text-gray-800 mb-8" id="modal-details">
+                    <p>Loading details...</p>
+                </div>
+                <div>
+                     <h4 class="text-base font-semibold text-gray-800 mb-4 flex items-center">
+                        <span class="lucide icon-tag mr-2 text-lg text-vision-indigo opacity-80"></span> Technologies Used
+                     </h4>
+                     <div class="flex flex-wrap gap-2.5" id="modal-tech">
+                        </div>
+                </div>
+            </div>
+             <div class="p-4 bg-gray-200/30 border-t border-black/5 text-right flex-shrink-0"> <button id="close-modal-footer-btn" class="px-5 py-2 bg-gray-600/10 text-gray-800 rounded-full hover:bg-gray-600/20 text-sm font-medium transition-colors">Close</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuButton.querySelector('span');
+
+        menuButton.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('icon-menu', isHidden);
+            menuIcon.classList.toggle('icon-x', !isHidden);
+        });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.add('icon-menu');
+                menuIcon.classList.remove('icon-x');
+            });
+        });
+
+        // --- Project Details Modal ---
+        const modal = document.getElementById('project-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCompany = document.getElementById('modal-company');
+        const modalDates = document.getElementById('modal-dates');
+        const modalDetailsContainer = document.getElementById('modal-details');
+        const modalTechContainer = document.getElementById('modal-tech');
+        const closeModalButton = document.getElementById('close-modal-btn');
+        const closeModalFooterButton = document.getElementById('close-modal-footer-btn');
+        const viewDetailsButtons = document.querySelectorAll('.view-details-btn');
+
+        function openModal(cardElement) {
+            // Find the parent card and then the inner div holding the data attributes
+            const card = cardElement.closest('.experience-card');
+            const dataDiv = card.querySelector('[data-title]'); // Get the div with data attributes
+            if (!dataDiv) return; // Exit if data div not found
+            const cardData = dataDiv.dataset;
+
+            modalTitle.textContent = cardData.title;
+            modalCompany.textContent = cardData.company;
+            modalDates.textContent = cardData.dates;
+
+            modalDetailsContainer.innerHTML = ''; // Clear previous
+            const detailsParagraphs = cardData.details.split('\n').filter(p => p.trim() !== '');
+            detailsParagraphs.forEach(pText => {
+                 const p = document.createElement('p');
+                 p.textContent = pText;
+                 p.classList.add('mb-3');
+                 modalDetailsContainer.appendChild(p);
+            });
+
+            modalTechContainer.innerHTML = ''; // Clear previous
+            const techList = cardData.tech.split(',').map(t => t.trim()).filter(t => t);
+            techList.forEach(tech => {
+                const span = document.createElement('span');
+                span.textContent = tech;
+                // Apply glass effect to tech tags in modal
+                span.className = `glass-effect text-xs font-medium px-3 py-1 rounded-full text-gray-800 border-none shadow-sm`;
+                modalTechContainer.appendChild(span);
+            });
+
+            modal.classList.remove('modal-hidden');
+            modal.classList.add('modal-visible');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            modal.classList.add('modal-hidden');
+            modal.classList.remove('modal-visible');
+            document.body.style.overflow = ''; // Restore background scrolling
+        }
+
+        // Attach listener to buttons
+        viewDetailsButtons.forEach(button => {
+            button.addEventListener('click', (e) => openModal(e.target));
+        });
+
+        // Close listeners
+        closeModalButton.addEventListener('click', closeModal);
+        closeModalFooterButton.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) { // Click on overlay
+                closeModal();
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.classList.contains('modal-visible')) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
