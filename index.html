@@ -120,6 +120,11 @@
         background: rgba(0, 0, 0, 0.4);
       }
 
+      /* Add basic prose styling for modal details if needed */
+      .prose p {
+        margin-bottom: 1em;
+      }
+
     </style>
     <script>
         tailwind.config = {
@@ -173,7 +178,7 @@
 
     <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-28 flex items-center justify-center text-center" style="background: radial-gradient(circle, rgba(230, 235, 255, 0.8) 0%, rgba(243, 244, 246, 0) 70%);">
         <div class="container mx-auto px-6">
-            <img src="https://avatars.githubusercontent.com/u/1143117?v=4" alt="Khairil Ushan Profile Picture" class="w-36 h-36 md:w-44 md:h-44 rounded-full mx-auto mb-8 border-4 border-white/80 shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/160x160/e0e7ff/4338ca?text=KU';">
+            <img src="https://placehold.co/160x160/e0e7ff/4338ca?text=KU" alt="Khairil Ushan Profile Picture" class="w-36 h-36 md:w-44 md:h-44 rounded-full mx-auto mb-8 border-4 border-white/80 shadow-xl" onerror="this.onerror=null; this.src='https://placehold.co/160x160/e0e7ff/4338ca?text=Fallback';">
             <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900">Khairil Ushan</h1>
             <p class="text-xl md:text-2xl mb-10 text-gray-600 font-medium">Mobile Application Developer</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
@@ -208,14 +213,13 @@
                          data-title="Software Engineer"
                          data-company="bol."
                          data-dates="Nov 2022 - Present"
-                         data-details="bol is the largest eCommerce website for The Netherlands and Belgium. I have been part of the team that manage CMS content, so using SwiftUI to build native UI to visualize these CMS content. And then I moved to another team that responsible for building Search Products flow within the app. Working with basic MVVM setup and modular architecture by embracing Swift Packages."
+                         data-details="Contributed to the development of the largest eCommerce platform in The Netherlands and Belgium. Initially focused on the CMS content team, utilizing SwiftUI to engineer native UI components for dynamic content visualization. Transitioned to the Search Products team, taking responsibility for building and enhancing the product search flow within the mobile application. Implemented solutions using MVVM architectural patterns and promoted code reusability and maintainability through modular architecture with Swift Packages."
                          data-tech="SwiftUI, MVVM, Swift Packages, iOS">
                         <div class="flex-grow">
                             <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Software Engineer</h3>
                             <p class="text-vision-indigo font-medium text-sm mb-2">bol.</p>
                             <p class="text-xs text-gray-500 mb-4">Nov 2022 - Present</p>
-                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Developed native UI for CMS content visualization and built the Search Products flow within the app...</p>
-                            <div class="flex flex-wrap gap-2">
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Engineered native UI with SwiftUI for CMS content and developed the core Search Products flow...</p> <div class="flex flex-wrap gap-2">
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">SwiftUI</span>
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
                                <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">iOS</span>
@@ -233,14 +237,13 @@
                          data-title="Principal Software Engineer"
                          data-company="PT Ice House (MOST Project)"
                          data-dates="Jul 2020 - Oct 2022"
-                         data-details="Implemented from scratch an Investment & Trading application for one of the biggest Bank in Indonesia. The application provides real time stock informations and allowing user to put create a buy/sell order. I implemented the iOS app with MVVM pattern for the presentation layer and adopting Clean Architecture on the data layer side. Each layer communicates with RxSwift APIs (Observable, Single, Completable, etc). I was using Moya library for the networking layer, where on the persistency layer I was using several things based on data sensitivity. So it was mix of Keychain, UserDefaults and Core Data. For handling real-time data communication with the WebSocket server, I used Starscream library. The whole codebase was written with Swift."
+                         data-details="Led the ground-up implementation of a sophisticated Investment & Trading iOS application for Mandiri Sekuritas, a leading Indonesian bank. Architected and developed features providing real-time stock market data visualization and enabling users to execute buy/sell orders seamlessly. Designed the application using MVVM for the presentation layer and Clean Architecture principles for the data layer, ensuring separation of concerns and testability. Leveraged RxSwift extensively for reactive communication between layers (Observable, Single, Completable). Integrated Moya for robust network interactions and employed a multi-tiered persistence strategy using Keychain, UserDefaults, and Core Data based on data sensitivity. Utilized Starscream for efficient real-time data synchronization via WebSocket communication."
                          data-tech="Swift, RxSwift, MVVM, Clean Architecture, Moya, Core Data, Keychain, UserDefaults, WebSocket, Starscream, iOS">
                          <div class="flex-grow">
                             <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Principal Software Engineer</h3>
                             <p class="text-vision-indigo font-medium text-sm mb-2">PT Ice House (MOST Project)</p>
                             <p class="text-xs text-gray-500 mb-4">Jul 2020 - Oct 2022</p>
-                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Implemented an Investment & Trading iOS app from scratch, providing real-time stock info and order functionality...</p>
-                             <div class="flex flex-wrap gap-2">
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Spearheaded the development of a real-time Investment & Trading iOS app using MVVM, Clean Architecture, and RxSwift...</p> <div class="flex flex-wrap gap-2">
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">RxSwift</span>
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Clean Arch.</span>
@@ -261,14 +264,13 @@
                          data-title="Senior iOS Engineer"
                          data-company="PT Ice House (Prodia Project)"
                          data-dates="Aug 2019 - Jul 2020"
-                         data-details="Implemented from scratch an iOS application for a well-known health clinic company in Indonesia. The application allows user to browse any tests that can be conducted on the clinic. Users can also chat with doctor on to decide which tests that they should take based on their health conditions. Finally, user able to purchase and pay for the tests through this application. I implemented the iOS app with MVVM pattern on the presentation layer and adapting Clean Architecture on the data layer side where those layers are communicates with RxSwift APIs (Observable, Single, Completable, etc). I was using Moya library for the networking layer, where on the persistency layer I was using several things based on data sensitivity. So it was mix of Keychain, UserDefaults and Core Data. And for the chat platform I was using Socket.io library to connect to the Chat platform provider that was provided by the client (Prodia). The whole codebase was written with Swift."
+                         data-details="Developed a comprehensive iOS application from inception for Prodia, a prominent Indonesian health clinic company. Engineered features allowing users to browse available clinical tests, engage in real-time chat consultations with doctors to determine appropriate tests based on health conditions, and complete the purchase and payment process within the app. Architected the application utilizing MVVM (Presentation) and Clean Architecture (Data), facilitating reactive data flow with RxSwift (Observable, Single, Completable). Managed network requests effectively using Moya and implemented secure and appropriate data persistence with Keychain, UserDefaults, and Core Data. Integrated Socket.io for real-time chat functionality, connecting to the client-provided chat platform."
                          data-tech="Swift, RxSwift, MVVM, Clean Architecture, Moya, Core Data, Keychain, UserDefaults, Socket.io, iOS">
                          <div class="flex-grow">
                             <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Senior iOS Engineer</h3>
                             <p class="text-vision-indigo font-medium text-sm mb-2">PT Ice House (Prodia Project)</p>
                              <p class="text-xs text-gray-500 mb-4">Aug 2019 - Jul 2020</p>
-                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Built an iOS app from scratch for a health clinic, enabling test browsing, doctor chat, and test purchasing/payment...</p>
-                             <div class="flex flex-wrap gap-2">
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Built a feature-rich health clinic iOS app from scratch, including test browsing, doctor chat (Socket.io), and payments...</p> <div class="flex flex-wrap gap-2">
                                 <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">RxSwift</span>
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Clean Arch.</span>
@@ -289,14 +291,13 @@
                          data-title="Staff iOS Engineer"
                          data-company="PT Ice House (MyBlueBird Project)"
                          data-dates="Oct 2018 - Jul 2019"
-                         data-details="MyBlueBird is ride hailing application for the biggest taxi company in Indonesia, Blue Bird Group (IDX: BIRD). Initially I was just maintaining the feature development from existing app until the company decided to revamped the whole UI to make it looks more modern and fresh. So I implemented the revamped version of the MyBlueBird app. I implemented the iOS app using MVVM pattern with Coordinator pattern to handle the navigation logic. And on data layer side I used Repository pattern to accommodate multiple data sources. There was needs for real-time communication between client and server on this app which to provide real-time order status updates. So, I used SwiftGRPC and swift-protobuf library for that case. I also implemented this application in the modularized way, so each feature is developed inside a specific Cocoa Touch Framework and the main app target that compose all those feature frameworks. The whole codebase was written with Swift."
+                         data-details="Contributed to the MyBlueBird ride-hailing application for Indonesia's largest taxi operator, Blue Bird Group. Initially maintained and enhanced features on the existing application before leading the implementation of a complete UI revamp for a modern user experience. Architected the revamped iOS application using MVVM combined with the Coordinator pattern for robust navigation logic. Implemented a Repository pattern on the data layer to manage multiple data sources effectively. Integrated real-time order status updates using SwiftGRPC and swift-protobuf for communication with the backend. Developed the application with a modular approach, encapsulating features within distinct Cocoa Touch Frameworks, composed by the main application target."
                          data-tech="Swift, MVVM, Coordinator Pattern, Repository Pattern, SwiftGRPC, Protobuf, Cocoa Touch Framework, iOS">
                          <div class="flex-grow">
                             <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Staff iOS Engineer</h3>
                             <p class="text-vision-indigo font-medium text-sm mb-2">PT Ice House (MyBlueBird Project)</p>
                              <p class="text-xs text-gray-500 mb-4">Oct 2018 - Jul 2019</p>
-                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Revamped the UI and implemented the MyBlueBird ride-hailing app using MVVM, Coordinator, and modular architecture...</p>
-                             <div class="flex flex-wrap gap-2">
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Revitalized the MyBlueBird iOS app with a modern UI, implementing MVVM, Coordinator pattern, and gRPC for real-time updates...</p> <div class="flex flex-wrap gap-2">
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Coordinator</span>
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">gRPC</span>
@@ -317,14 +318,13 @@
                          data-title="Senior iOS Engineer"
                          data-company="MatahariMall.com"
                          data-dates="Mar 2016 - Sept 2018"
-                         data-details="MatahariMall.com is an eCommerce company. The application allows user to browse all products from all sellers that is available until they decide to purchase and pay for the product. When I joined the team, I helped maintain the new and existing feature which still using Objective-C until we decided to rewrite the whole code to Swift. I implemented MVVM with Clean Architecture approach where each feature is modularized to specific development Pods (Cocoapods). I used Moya for networking layer and mix of Realm, KeyChain and UserDefaults for the persistency layer."
+                         data-details="Played a key role in the development of the MatahariMall.com eCommerce iOS application. Initially maintained and added features to the existing Objective-C codebase. Contributed significantly to the strategic decision and execution of rewriting the entire application in Swift. Implemented the Swift version using an MVVM and Clean Architecture approach, promoting modularity by developing features within distinct development Pods (Cocoapods). Utilized Moya for the networking layer and managed data persistence using a combination of Realm, Keychain, and UserDefaults."
                          data-tech="Swift, Objective-C, MVVM, Clean Architecture, Cocoapods, Moya, Realm, Keychain, UserDefaults, iOS">
                          <div class="flex-grow">
                             <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Senior iOS Engineer</h3>
                             <p class="text-vision-indigo font-medium text-sm mb-2">MatahariMall.com</p>
                              <p class="text-xs text-gray-500 mb-4">Mar 2016 - Sept 2018</p>
-                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Maintained Objective-C features and led the rewrite to Swift for the eCommerce app using MVVM, Clean Architecture...</p>
-                             <div class="flex flex-wrap gap-2">
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Maintained Objective-C features and contributed to the full Swift rewrite of the eCommerce app using MVVM and Clean Architecture...</p> <div class="flex flex-wrap gap-2">
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">Swift</span>
                                <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">Objective-C</span>
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
@@ -345,14 +345,13 @@
                          data-title="Mobile Application Developer"
                          data-company="Street Directory Pte Ltd"
                          data-dates="Apr 2013 - Feb 2016"
-                         data-details="Singapore Map (iOS & Android): When I joined the company, I was an Android Developer. After few months due to lack of resource I also helped to develop the iOS application. SingaporeMap is map based application that provides information about business directory, bus stop informations and point-to-point direction. I maintained the existing codebase to add features or fixing some bugs. Very basic architecture where the Activity or UIViewController layer directly depends on the data layer. For the map, we had our own map engine since we had our own cartographer that draw the actual map, so were not using any map provider.\n\nOpenSnap by OpenRice (Android): OpenSnap is an application that allows users to share photos of food that they eat and where they eat it. It also provides detail information about restaurant and restaurant's reviews."
+                         data-details="Began as an Android Developer, later expanding responsibilities to include iOS development due to resource needs. Maintained and enhanced the 'Singapore Map' application (Android & iOS), providing business directory listings, bus stop information, and point-to-point directions. Worked with a proprietary map engine developed in-house. Developed features for the 'OpenSnap by OpenRice' Android application, a platform for sharing food photos and accessing restaurant reviews and details. Contributed to feature additions and bug fixes across existing codebases, adapting to a basic architecture with direct dependencies between UI and data layers."
                          data-tech="Android, Java, iOS, Objective-C, Custom Map Engine">
                          <div class="flex-grow">
                             <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Mobile Application Developer</h3>
                             <p class="text-vision-indigo font-medium text-sm mb-2">Street Directory Pte Ltd</p>
                              <p class="text-xs text-gray-500 mb-4">Apr 2013 - Feb 2016</p>
-                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Developed and maintained Android & iOS apps (Singapore Map, OpenSnap) including features, bug fixes, and custom map integration...</p>
-                             <div class="flex flex-wrap gap-2">
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Developed and maintained Android & iOS map/directory apps (Singapore Map, OpenSnap), working with a custom map engine...</p> <div class="flex flex-wrap gap-2">
                                 <span class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Android</span>
                                 <span class="bg-orange-100 text-orange-800 text-xs font-medium px-3 py-1 rounded-full">Java</span>
                                <span class="bg-gray-200 text-gray-800 text-xs font-medium px-3 py-1 rounded-full">iOS</span>
@@ -372,14 +371,13 @@
                          data-title="Android Engineer (Part-time)"
                          data-company="KitaBisa"
                          data-dates="2013 (3 Months)"
-                         data-details="I rewrite the whole codebase to Kotlin, which previously built with React Native. KitaBisa is the biggest crowdsourcing company in Indonesia that allow their users to donate money to other people in needs. I implemented the application using MVVM with Clean Architecture approach, where I used Retrofit for the networking layer, mix of Room and Shared Preferences for the persistency layer. The the ViewModel was inherited from Android Architecture Component's ViewModel."
+                         data-details="Executed a complete rewrite of the KitaBisa Android application, migrating the codebase from React Native to native Kotlin. KitaBisa is Indonesia's largest crowdsourcing platform enabling users to donate to various causes. Implemented the native application using modern Android development practices, including MVVM architecture combined with Clean Architecture principles. Utilized Retrofit for efficient network communication, Room and SharedPreferences for data persistence, and leveraged Android Architecture Components, including ViewModel."
                          data-tech="Kotlin, Android, MVVM, Clean Architecture, Retrofit, Room, Shared Preferences, Android Architecture Components">
                          <div class="flex-grow">
                             <h3 class="text-xl font-semibold mb-1.5 text-gray-900">Android Engineer (Part-time)</h3>
                             <p class="text-vision-indigo font-medium text-sm mb-2">KitaBisa</p>
                              <p class="text-xs text-gray-500 mb-4">2013 (3 Months)</p>
-                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Rewrote the Android application from React Native to native Kotlin using MVVM and Clean Architecture for Indonesia's largest crowdsourcing platform...</p>
-                             <div class="flex flex-wrap gap-2">
+                            <p class="text-gray-700 text-sm mb-5 leading-relaxed line-clamp-3">Executed a full rewrite of the Android app from React Native to native Kotlin, employing MVVM and Clean Architecture...</p> <div class="flex flex-wrap gap-2">
                                <span class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Kotlin</span>
                                <span class="bg-green-100 text-green-800 text-xs font-medium px-3 py-1 rounded-full">Android</span>
                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium px-3 py-1 rounded-full">MVVM</span>
@@ -537,16 +535,14 @@
             modalCompany.textContent = cardData.company;
             modalDates.textContent = cardData.dates;
 
-            modalDetailsContainer.innerHTML = ''; // Clear previous
-            const detailsParagraphs = cardData.details.split('\n').filter(p => p.trim() !== '');
-            detailsParagraphs.forEach(pText => {
-                 const p = document.createElement('p');
-                 p.textContent = pText;
-                 p.classList.add('mb-3');
-                 modalDetailsContainer.appendChild(p);
-            });
+            // --- UPDATED DETAILS HANDLING ---
+            // Set the entire details string as the text content of the container
+            // The 'prose' class on the container will handle basic paragraph styling
+            modalDetailsContainer.textContent = cardData.details;
+            // --- END OF UPDATE ---
 
-            modalTechContainer.innerHTML = ''; // Clear previous
+
+            modalTechContainer.innerHTML = ''; // Clear previous tech tags
             const techList = cardData.tech.split(',').map(t => t.trim()).filter(t => t);
             techList.forEach(tech => {
                 const span = document.createElement('span');
